@@ -30,6 +30,7 @@ This project is built with a carefully selected stack of modern iOS development 
 
 The project is organized into distinct layers following Clean Architecture principles:
 
+```text
 ├── Domain Layer
 │ ├── Models (Task entity)
 │ └── UseCases (Business logic)
@@ -44,7 +45,7 @@ The project is organized into distinct layers following Clean Architecture princ
 │ ├── Environment
 │ └── Reducer
 └── SwiftUI Views
-
+```
 
 ## Skills Demonstrated 🥋
 
