@@ -4,7 +4,7 @@
 
 ## Project Description 🎨
 
-This project showcases a clean, modular ToDo application built with modern iOS architecture patterns. It demonstrates how to structure an app using Clean Architecture principles, with clear separation between Domain, Data, and Presentation layers. The app leverages The Composable Architecture (TCA) for robust state management and testability, while providing a smooth user experience through SwiftUI's declarative UI paradigm. ✨
+This project showcases a clean, modular ToDo application built with modern iOS architecture patterns. It demonstrates how to structure an app using Clean Architecture principles, with clear separation between Domain, Data, and Presentation layers. The app leverages The Composable Architecture (TCA) for robust state management and testability, while providing a smooth user experience through SwiftUI's declarative UI paradigm.
 
 <img src="https://github.com/user-attachments/assets/ff63b610-4895-468c-b0e6-0a88072172c3" alt="ToDo App Screenshot" width="400" height="400" />
 
