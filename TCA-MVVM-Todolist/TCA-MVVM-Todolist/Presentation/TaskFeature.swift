@@ -8,6 +8,7 @@
 import ComposableArchitecture
 import Foundation
 
+@Reducer
 public struct TaskFeature {
     public struct State: Equatable {
         public var tasks: [Task] = []
@@ -20,37 +21,45 @@ public struct TaskFeature {
         case setNewTitle(String)
         case addButtonTapped
         case toggleComplete(id: UUID)
+        case tasksLoaded([Task])
     }
 
-    public struct Environment {
-        public var mainQueue: AnySchedulerOf<DispatchQueue>
-        public var useCase: TaskUseCaseProtocol
-    }
+    @Dependency(\.taskUseCase) var useCase
 
-    public static let reducer = Reducer<State, Action, Environment> {
-        state,
-        action,
-        env in
-        switch action {
-        case .onAppear:
-            state.tasks = env.useCase.fetchTasks()
-            return .none
+    public var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .onAppear:
+                return .run { send in
+                    let tasks = await useCase.fetchTasks()
+                    await send(.tasksLoaded(tasks))
+                }
 
-        case let .setNewTitle(title):
-            state.newTitle = title
-            return .none
+            case .setNewTitle(let title):
+                state.newTitle = title
+                return .none
 
-        case .addButtonTapped:
-            guard !state.newTitle.isEmpty else { return .none }
-            env.useCase.addTask(title: state.newTitle)
-            state.tasks = env.useCase.fetchTasks()
-            state.newTitle = ""
-            return .none
+            case .addButtonTapped:
+                guard !state.newTitle.isEmpty else { return .none }
+                let title = state.newTitle
+                state.newTitle = ""
+                return .run { send in
+                    await useCase.addTask(title: title)
+                    let tasks = await useCase.fetchTasks()
+                    await send(.tasksLoaded(tasks))
+                }
 
-        case let .toggleComplete(id):
-            env.useCase.toggleCompletion(id: id)
-            state.tasks = env.useCase.fetchTasks()
-            return .none
+            case .toggleComplete(let id):
+                return .run { send in
+                    await useCase.toggleCompletion(id: id)
+                    let tasks = await useCase.fetchTasks()
+                    await send(.tasksLoaded(tasks))
+                }
+
+            case .tasksLoaded(let tasks):
+                state.tasks = tasks
+                return .none
+            }
         }
     }
 }
