@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AF02AA012DD83B5300C6CCBD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = AF02AA002DD83B5300C6CCBD /* ComposableArchitecture */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AFCC32CF2DD2469900253C03 /* TCA-MVVM-Todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-MVVM-Todolist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF02AA012DD83B5300C6CCBD /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "TCA-MVVM-Todolist";
 			packageProductDependencies = (
+				AF02AA002DD83B5300C6CCBD /* ComposableArchitecture */,
 			);
 			productName = "TCA-MVVM-Todolist";
 			productReference = AFCC32CF2DD2469900253C03 /* TCA-MVVM-Todolist.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = AFCC32C62DD2469900253C03;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AF02A9FF2DD83B5300C6CCBD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AFCC32D02DD2469900253C03 /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF02A9FF2DD83B5300C6CCBD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF02AA002DD83B5300C6CCBD /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF02A9FF2DD83B5300C6CCBD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AFCC32C72DD2469900253C03 /* Project object */;
 }
